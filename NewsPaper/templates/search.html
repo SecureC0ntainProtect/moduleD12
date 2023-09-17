@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+
+{% block title %}
+Search
+{% endblock title %}
+
+{% block content %}
+<h2>Поиск новостей</h2>
+<hr>
+<form method="get">
+    {{ filter.form }}
+    <input type="submit" value="Поиск">
+</form>
+
+{% for post in filter.qs %}
+<a href="/news/{{ post.id }}">
+    <div>
+        <h5>{{ post.title | censor:post.title }}</h5>
+        <div>{{ post.text | truncatechars:50 | censor:post.text  }}</div> 
+        <div class="small">{{ post.datetime | date:'d.m.Y' }}</div>
+    </div>
+</a>
+{% endfor %}
+{% endblock content %}

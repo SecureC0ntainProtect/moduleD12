@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<h1>{{ post.title | censor:post.title }} ({{ post.dateCreation | date:'d M Y H:i' }})</h1>
+<br>
+<span>{{ post.text | censor:post.text }}</span>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Подтвердить">
+</form>
+{% endblock content %}

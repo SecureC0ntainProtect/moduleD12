@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+  Страница входа
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Войти в систему</h2>
+    <form method="post" action="{% url 'login' %}" style="display: flex; align-self: center;">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Войти" />
+    </form>
+    <button class="btn btn-in" style="display:flex;align-self: center;"><a href="/sign/signup">Регистрация</a></button>
+  </div>
+{% endblock %}

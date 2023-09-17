@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block content %}
+<h1>{{ post.title | censor:post.title }} ({{ post.datetime | date:'d M Y H:i' }})</h1>
+<br>
+<span>{{ post.text | censor:post.text }}</span>
+
+<hr>
+
+<a href="{% url 'post_list' %}">Вернуться к списку новостей</a><br>
+<a href="{% url 'news_edit' post.id %}">Редактировать новость</a><br>
+<a href="{% url 'news_delete' post.id %}">Удалить новость</a>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+  Страница регистрации
+{% endblock %}
+
+{% block content %}
+  <h2>Войти в систему</h2>
+  <div class="container">
+    <form method="post" class="form-control" style="display:flex;flex-direction: column;">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Продолжить" />
+    </form>
+  </div>
+{% endblock %}
